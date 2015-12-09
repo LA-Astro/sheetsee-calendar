@@ -8,26 +8,21 @@ function generateCalendar (eventData) {
     // add today's date to start the calendar off
     eventData.push({"startdate": today})
     // add a year's worth of dates, roughly
-    console.log("Today")
-    console.log(today)
     var startOfMonth = new Date()
     startOfMonth.setDate(1)
-    console.log("startOfMonth", startOfMonth)
     loopForTimes(12, function() {
 	var newMonth = startOfMonth.getMonth() + 1
 	var newYear = startOfMonth.getFullYear()
-	console.log("new month:", newMonth)
-	console.log("new year:", newYear)
 	if (newMonth > 11) {
 	    newYear = newYear + 1
 	    newMonth = newMonth - 12
-	    console.log("changing to new month", newMonth, "and new year", newYear)
 	}
 	startOfMonth.setMonth(newMonth)
 	startOfMonth.setFullYear(newYear)
-	console.log("new startOfMonth", startOfMonth)
 	eventData.push({"startdate": startOfMonth})
     })
+
+    console.log("all the months:", eventData)
 
     generateAllTheMonths(eventData)
     eventData.forEach(function (event) {

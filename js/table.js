@@ -8,12 +8,12 @@ function generateCalendar (eventData) {
     // add today and 1 year of months to the list so the calendar starts on
     // today's date and extends for 1 year
     eventData.push({"startdate": today, "name": ""})    
-    var firstOfMonth = new Date()
-    firstOfMonth.setDate(1)
-    loopForTimes(12, function() {
-	firstOfMonth.setMonth(firstOfMonth.getMonth()+1)
-	eventData.push({"startdate": firstOfMonth, "name": ""})
-    })
+    // var firstOfMonth = new Date()
+    // firstOfMonth.setDate(1)
+    // loopForTimes(12, function() {
+    // 	firstOfMonth.setMonth(firstOfMonth.getMonth()+1)
+    // 	eventData.push({"startdate": firstOfMonth, "name": ""})
+    // })
 
   generateAllTheMonths(eventData)
   eventData.forEach(function (event) {

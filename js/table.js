@@ -102,6 +102,8 @@ function generateAllTheMonths( eventData ) {
     if (event.enddate) dates.push(event.enddate)
   })
 
+    console.log("dates: ", dates)
+
   dates.forEach(function (date) {
       date = new Date(date)
       console.log("date", date)

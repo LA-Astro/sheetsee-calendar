@@ -19,6 +19,7 @@ function generateCalendar (eventData) {
 	}
 	startOfMonth.setMonth(newMonth)
 	startOfMonth.setFullYear(newYear)
+	console.log("startOfMonth", startOfMonth)
 	eventData.push({"startdate": startOfMonth})
     })
 

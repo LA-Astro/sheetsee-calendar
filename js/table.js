@@ -7,7 +7,7 @@ function generateCalendar (eventData) {
     var eventData = eventData.sort(function(a, b) { return (new Date(a.startdate)) - (new Date(b.startdate)) })
     // add today and 1 year of months to the list so the calendar starts on
     // today's date and extends for 1 year
-    eventData.push({"startdate": today, "name": ""})    
+    eventData.push({"startdate": today})    
     // var firstOfMonth = new Date()
     // firstOfMonth.setDate(1)
     // loopForTimes(12, function() {
@@ -50,8 +50,12 @@ function addMonthMenu() {
 
 function appendEvent( event ) {
   var eventStartDate = new Date(event.startdate)
-  var eventEndDate   = new Date(event.enddate)
-  var eventElement   = $('<div class="event"><a target="_blank" href="' + event.tickets + '">' + event.name + '</a></div>')
+    var eventEndDate   = new Date(event.enddate)
+    if (event.name) {
+	var eventElement   = $('<div class="event"><a target="_blank" href="' + event.tickets + '">' + event.name + '</a></div>')
+    } else {
+	var eventElement   = $('<div class="event"></div>')
+    }
 
   // Handle multi-days
   if ( eventEndDate.getDate() ) {

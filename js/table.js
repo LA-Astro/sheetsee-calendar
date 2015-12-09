@@ -5,24 +5,17 @@ var months = []
 
 function generateCalendar (eventData) {
     var eventData = eventData.sort(function(a, b) { return (new Date(a.startdate)) - (new Date(b.startdate)) })
-    // add today and 1 year of months to the list so the calendar starts on
-    // today's date and extends for 1 year
+    // add today's date to start the calendar off
     eventData.push({"startdate": today})    
-    // var firstOfMonth = new Date()
-    // firstOfMonth.setDate(1)
-    // loopForTimes(12, function() {
-    // 	firstOfMonth.setMonth(firstOfMonth.getMonth()+1)
-    // 	eventData.push({"startdate": firstOfMonth, "name": ""})
-    // })
 
-  generateAllTheMonths(eventData)
-  eventData.forEach(function (event) {
-    appendEvent(event)
-  })
+    generateAllTheMonths(eventData)
+    eventData.forEach(function (event) {
+	appendEvent(event)
+    })
 
   // Highlight today
-  $('#' + formattedDate(today)).removeClass('no-event').addClass('today')
-  addMonthMenu()
+    $('#' + formattedDate(today)).removeClass('no-event').addClass('today')
+    addMonthMenu()
 }
 
 function addMonthMenu() {

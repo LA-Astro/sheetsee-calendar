@@ -20,7 +20,6 @@ function generateCalendar (eventData) {
 	startOfMonth.setMonth(newMonth)
 	startOfMonth.setFullYear(newYear)
 	var dateStr = (startOfMonth.getMonth()+1) + "/" + startOfMonth.getDate() + "/" + startOfMonth.getFullYear()
-	console.log("startOfMonth", dateStr)
 	eventData.push({"startdate": dateStr})
     })
 
@@ -61,7 +60,7 @@ function appendEvent( event ) {
   var eventStartDate = new Date(event.startdate)
     var eventEndDate   = new Date(event.enddate)
     if (event.name) {
-	var eventElement   = $('<div class="event"><a target="_blank" href="' + event.tickets + '">' + event.name + '</a></div>')
+	var eventElement   = $('<div class="event">' + event.name + '</div>')
     } else {
 	var eventElement   = $('<div class="event"></div>')
     }
@@ -88,7 +87,7 @@ function appendEvent( event ) {
         dateElement.append('<div class="event spacer">&nbsp;</div>')
       })
 
-      dateElement.removeClass('no-event').append('<div class="event multi-days following-days" title="' + event.name + '"><a target="_blank" href="' + event.tickets + '">' + event.name + '</a></div>')
+      dateElement.removeClass('no-event').append('<div class="event multi-days following-days" title="' + event.name + event.name + '</div>')
     }
   }
 
@@ -104,11 +103,8 @@ function generateAllTheMonths( eventData ) {
     if (event.enddate) dates.push(event.enddate)
   })
 
-    console.log("dates: ", dates)
-
   dates.forEach(function (date) {
       date = new Date(date)
-      console.log("date", date)
     if(months.indexOf(date.getFullYear().toString() + date.getMonth()) < 0) {
       months.push(date.getFullYear().toString() + date.getMonth())
       generateMonthTable(date)

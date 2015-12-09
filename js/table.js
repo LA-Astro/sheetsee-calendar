@@ -22,8 +22,6 @@ function generateCalendar (eventData) {
 	eventData.push({"startdate": startOfMonth})
     })
 
-    console.log("all the months:", eventData)
-
     generateAllTheMonths(eventData)
     eventData.forEach(function (event) {
 	appendEvent(event)
@@ -105,7 +103,8 @@ function generateAllTheMonths( eventData ) {
   })
 
   dates.forEach(function (date) {
-    date = new Date(date)
+      date = new Date(date)
+      console.log("date", date)
     if(months.indexOf(date.getFullYear().toString() + date.getMonth()) < 0) {
       months.push(date.getFullYear().toString() + date.getMonth())
       generateMonthTable(date)

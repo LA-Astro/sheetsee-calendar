@@ -4,7 +4,9 @@ var today  = new Date()
 var months = []
 
 function generateCalendar (eventData) {
-  var eventData = eventData.sort(function(a, b) { return (new Date(a.startdate)) - (new Date(b.startdate)) })
+    var eventData = eventData.sort(function(a, b) { return (new Date(a.startdate)) - (new Date(b.startdate)) })
+    // add today to the list so the calendar starts on today's date
+    eventData.push({"startdate": today})
   generateAllTheMonths(eventData)
   eventData.forEach(function (event) {
     appendEvent(event)

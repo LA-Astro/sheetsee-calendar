@@ -13,9 +13,17 @@ function generateCalendar (eventData) {
     var newdate = new Date(today.getYear(), today.getMonth()+2, today.getDate())
     console.log("newdate")
     console.log(newdate)
-    var startOfMonth = new Date().setDate(1)
+    var startOfMonth = new Date()
+    startOfMonth.setDate(1)
     loopForTimes(12, function() {
-	startOfMonth.setMonth(startOfMonth.getMonth()+1)
+	var newMonth = startOfMonth.getMonth() + 1
+	var newYear = startOfMonth.getYear()
+	if (newMonth > 11) {
+	    newYear = newYear + 1
+	    newMonth = newMonth - 12
+	}
+	startOfMonth.setMonth(newMonth)
+	startOfMonth.setYear(newYear)
 	eventData.push({"startdate": startOfMonth})
     })
 

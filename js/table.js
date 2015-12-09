@@ -8,6 +8,11 @@ function generateCalendar (eventData) {
     // add today's date to start the calendar off
     eventData.push({"startdate": today})
     // add a year's worth of dates, roughly
+    console.log("Today")
+    console.log(today)
+    var newdate = new Date(today.getYear(), today.getMonth()+2, today.getDate())
+    console.log("newdate")
+    console.log(newdate)
     var startOfMonth = new Date().setDate(1)
     loopForTimes(12, function() {
 	startOfMonth.setMonth(startOfMonth.getMonth()+1)

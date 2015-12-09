@@ -6,7 +6,13 @@ var months = []
 function generateCalendar (eventData) {
     var eventData = eventData.sort(function(a, b) { return (new Date(a.startdate)) - (new Date(b.startdate)) })
     // add today's date to start the calendar off
-    eventData.push({"startdate": today})    
+    eventData.push({"startdate": today})
+    // add a year's worth of dates, roughly
+    var startOfMonth = new Date().setDate(1)
+    loopForTimes(12, function() {
+	startOfMonth.setMonth(startOfMonth.getMonth()+1)
+	eventData.push({"startdate": startOfMonth})
+    })
 
     generateAllTheMonths(eventData)
     eventData.forEach(function (event) {

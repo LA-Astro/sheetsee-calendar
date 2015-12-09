@@ -13,6 +13,7 @@ function generateCalendar (eventData) {
     loopForTimes(12, function() {
 	firstOfMonth.setMonth(firstOfMonth.getMonth()+1)
 	eventData.push({"startdate": firstOfMonth, "name": ""})
+    })
 
   generateAllTheMonths(eventData)
   eventData.forEach(function (event) {
